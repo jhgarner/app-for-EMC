@@ -8,4 +8,4 @@
     <item android:id="@+id/backward" android:title="backward"
         android:orderInCategory="1" app:showAsAction="ifRoom"
         android:icon="@drawable/ic_chevron_left_white_48dp"/>
-</menu><!-- From: file:/C:/Users/jack/AndroidStudioProjects/EMCapp/app/src/main/res/menu/menu_post.xml -->
+</menu><!-- From: file:/C:/Users/jack/AndroidStudioProjects/emcproject/app-for-EMC/app/src/main/res/menu/menu_post.xml -->
