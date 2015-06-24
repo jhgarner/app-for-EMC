@@ -1,5 +1,4 @@
 EMCApp
 ======
 
-The android app for the Empire Minecraft website
-NOTE: Currently in a complete rewrite in the Versio-2 brance. 
+The android app for the Empire Minecraft website. This is the new and working version.
