@@ -151,12 +151,12 @@ public class GetThreads extends AsyncTask<URL, Integer, String[][]> {
                     in.close();
                 } catch (IOException e) {
                     threads[0][0] = "An error has occured. Please check your internet connection";
-                    threads[0][1] = "An error has occured. Please check your internet connection";
+                    threads[0][1] = "abort";
                     e.printStackTrace();
                 }
             } catch (IOException e) {
                 threads[0][0] = "An error has occured. Please check your internet connection";
-                threads[0][1] = "An error has occured. Please check your internet connection";
+                threads[0][1] = "abort";
                 e.printStackTrace();
             }
             avatars = new Bitmap[numThread];
@@ -183,12 +183,15 @@ public class GetThreads extends AsyncTask<URL, Integer, String[][]> {
     }
     @Override
     protected void onPostExecute(String[][] threads){
+        if(numThread == 0){
+            numThread++;
+        }
         String[][] sizedThreads = new String[numThread][3];
-        sizedThreads = threads;
+        for(int i = 0; i<numThread; i++){
+            sizedThreads[i] = threads[i];
+        }
         spinner.setVisibility(View.GONE);
         callback.onFinish(sizedThreads, avatars);
-
-
     }
     public interface fillUiInterface {
         public void onFinish(String[][] threads, Bitmap[] avatars);

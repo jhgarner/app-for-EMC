@@ -79,14 +79,18 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Se
     public void onBindViewHolder(SectionViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.thread_name.setText(threads[position][1]);
-        holder.user_image.setImageBitmap(avatars[position]);
-
+        if(threads[0][1].equals("abort")){
+            holder.thread_name.setText("An error has occured. Please check your internet connection");
+        }
+        else {
+            holder.thread_name.setText(threads[position][1]);
+            holder.user_image.setImageBitmap(avatars[position]);
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return avatars.length;
+        return threads.length;
     }
 }

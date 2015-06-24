@@ -79,14 +79,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.SectionViewHol
     public void onBindViewHolder(SectionViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.userName.setText(posts[position][2]);
-        holder.user_image.setImageBitmap(avatars[position]);
-        holder.content.setBackgroundColor(0);
-        holder.content.setBackgroundResource(android.support.v7.cardview.R.color.cardview_light_background);
-        //Webview + HTML is great. Some special things are added to make sure that it styles correctly.
-        holder.content.loadDataWithBaseURL("http://empireminecraft.com/", "<TEXT=\"000000\"><style>img{display: inline; height:auto; max-width: 100%;}</style>" + posts[position][0], "text/html", "utf8", null);
-    }
+        if (posts[0][1].equals("abort")) {
+            holder.userName.setText("An error has occured. Please check your internet connection.");
+        } else {
+            holder.userName.setText(posts[position][2]);
+            holder.user_image.setImageBitmap(avatars[position]);
+            holder.content.setBackgroundColor(0);
+            holder.content.setBackgroundResource(android.support.v7.cardview.R.color.cardview_light_background);
+            //Webview + HTML is great. Some special things are added to make sure that it styles correctly.
+            holder.content.loadDataWithBaseURL("http://empireminecraft.com/", "<TEXT=\"000000\"><style>img{display: inline; height:auto; max-width: 100%;}</style>" + posts[position][0], "text/html", "utf8", null);
 
+        }
+    }
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {

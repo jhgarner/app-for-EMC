@@ -144,12 +144,12 @@ public class GetPosts extends AsyncTask<String, Void, String[][]> {
                     in.close();
                 } catch (IOException e) {
                     posts[0][0] = "An error has occured. Please check your internet connection";
-                    posts[0][1] = "An error has occured. Please check your internet connection";
+                    posts[0][1] = "abort";
                     e.printStackTrace();
                 }
             } catch (IOException e) {
                 posts[0][0] = "An error has occured. Please check your internet connection";
-                posts[0][1] = "An error has occured. Please check your internet connection";
+                posts[0][1] = "abort";
                 e.printStackTrace();
             }
             avatars = new Bitmap[numPosts];
@@ -176,6 +176,9 @@ public class GetPosts extends AsyncTask<String, Void, String[][]> {
     }
 
     protected void onPostExecute(String[][] donePost) {
+        if(numPosts == 0){
+            numPosts++;
+        }
         String[][] sizedPosts = new String[numPosts][3];
         for(int i = 0; i<numPosts; i++){
             sizedPosts[i] = posts[i];
